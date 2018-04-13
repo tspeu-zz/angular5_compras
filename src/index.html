@@ -2,13 +2,30 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Compras</title>
-  <base href="/">
+  <title>Compras JM</title>
+  <base href="./">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+
 </head>
 <body>
   <app-root></app-root>
+
+  <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyDJzlwcQRKz0kwKyXRB44Lm-OMP805KSrQ",
+      authDomain: "smart-home-78b50.firebaseapp.com",
+      databaseURL: "https://smart-home-78b50.firebaseio.com",
+      projectId: "smart-home-78b50",
+      storageBucket: "smart-home-78b50.appspot.com",
+      messagingSenderId: "1030652514308"
+    };
+    firebase.initializeApp(config);
+  </script>
+
 </body>
 </html>

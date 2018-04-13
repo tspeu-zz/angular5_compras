@@ -1,0 +1,22 @@
+<div class="container">
+  <h3>Listado de Proveedores</h3>
+  <a class="btn btn-primary float-md-left" routerLink="/addprove">Add nuevo proveedor</a>
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr class="filters">
+        <th>Nombre</th>
+        <th>Email</th>
+        <th>Tel:</th>
+        <th>Contacto:</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor=" let p of proveedores" appItemselect>
+        <td> {{ p.nombre }}</td>
+        <td> <a href="mailto:{{ p.email }}"> {{ p.email }}</a></td>
+        <td> {{ p.telefono }}</td>
+        <td> {{ p.contacto }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
