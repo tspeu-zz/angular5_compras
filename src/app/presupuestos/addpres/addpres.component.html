@@ -1,18 +1,27 @@
 <div class="row">
-    <div class="col <col col-md"></div>
-    <div class="col <col-10 col-md-8">
+    <div class="col col col-md"></div>
+    <div class="col col-10 col-md-8">
       <h2>Add nuevo Presupuesto</h2>
+
+      <div class="col-sm pb-2">
+          <a class="btn btn-alert float-md-right "
+          routerLink="/">Go Home</a>
+      </div>
+
       <form [formGroup]="presupuestoForm" (ngSubmit)="onSubmit()">
 
         <div class="form-group">
           <label for="proveedor"><i class="fas fa-asterisk obligado">&nbsp;</i>Proveedor</label>
           <i class="fas fa-check-square check" *ngIf="presupuestoForm.get('proveedor').valid"></i>
-          <i class="fas fa-exclamation-triangle uncheck"  *ngIf="presupuestoForm.get('proveedor').invalid && presupuestoForm.get('proveedor').touched"></i>
+          <i class="fas fa-exclamation-triangle uncheck" *ngIf="presupuestoForm.get('proveedor').invalid && presupuestoForm.get('proveedor').touched"></i>
+          
           <input type="text" class="form-control" name="proveedor"  id="proveedor"
           formControlName="proveedor">
+
           <div class="alert alert-danger" role="alert" 
           *ngIf="presupuestoForm.get('proveedor').invalid && presupuestoForm.get('proveedor').touched">
-          Introduzca mínmino 5 caracteres!</div>
+          Introduzca mínmino 5 caracteres!
+          </div>
         <!-- *ngIf="presupuestoForm.get('proveedor').invalid && presupuestoForm.get('proveedor').touched">
           Introduzca mínmino 5 caracteres!</div> -->
         </div>
@@ -20,24 +29,25 @@
         <div class="form-group">
           <label for="fecha">fecha</label>
           <input type="date" class="form-control" name="fecha" id="fecha"
-          formControlName="fecha">
+          formControlName="fecha" >
         </div>
 
         <div class="form-group">
           <label for="concepto">Concepto</label>
           <input type="text" class="form-control" name="concepto" id="concepto"
-          formControlName="concepto">
+          formControlName="concepto" >
         </div>
 
         <div class="form-group">
           <label for="base">Base imponible</label>
           <input type="number" class="form-control" name="base" id="base"
-          formControlName="base">
+          formControlName="base" >
         </div>
 
         <div class="form-group">
             <label for="tipo">Tipo de IVA</label>
-            <select class="form-control" id="tipo" name="tipo" formControlName="tipo" >
+            <select class="form-control" id="tipo" name="tipo" 
+            formControlName="tipo">
               <option value="">seleccione....</option>
               <option value=0> 0 %   </option>
               <option value=0.04> 4 %</option>
@@ -59,17 +69,32 @@
             formControlName="total" [(ngModel)]="presupuestoForm.value.total" >
         </div>
 
-        <button type="submit" class="btn btn-success"
-          [disabled]="!presupuestoForm.valid">Add presupuesto</button>
+        <div class="col col pb-3 col-sm">
+          <button type="submit" class="btn btn-success"
+          [disabled]="!presupuestoForm.valid">Guardar nuevo presupuesto
+        </button>
+          
+          <a  class="btn btn-danger" routerLink="/presupuestos">Cancelar</a>  
+          
+          
+        </div>
+        <div class="col py-2 col-sm">  
+              <span class="alert alert-warning" *ngIf="!presupuestoForm.valid ">
+                Por Favor Rellene todos los campos obligatorios marcados con 
+                <i class="fas fa-asterisk obligado">&nbsp;</i></span>
+        </div>
 
-          <span class="alert alert-warning" *ngIf="!presupuestoForm.valid ">
-            Por Favor Rellene todos los campos obligatorios marcados con <i class="fas fa-asterisk obligado">&nbsp;</i></span>
+
       </form> 
+
+    <!-- <div class="py-5">
+
       <pre>Valor form {{ presupuestoForm.value | json}}</pre>
       <pre>Estado {{presupuestoForm.status | json }}</pre>
       <pre>VALOR ENVIADO {{presupuesto | json }}</pre>
+      
+    </div> -->
 
-
-    </div>
+  </div>
   <div class="col col col-md"></div>
 </div>

@@ -1,17 +1,29 @@
 <div class="container">
-  <h3>Listado de Proveedores</h3>
-  <a class="btn btn-primary float-md-left" routerLink="/addprove">Add nuevo proveedor</a>
-  <table class="table table-bordered table-striped">
-    <thead>
-      <tr class="filters">
-        <th>Nombre</th>
-        <th>Email</th>
-        <th>Tel:</th>
+  <div class="row p-3">
+    <div class="col-sm">
+        <h3>Proveedores</h3>
+      </div>
+    <div class="col sm">
+      <a class="btn btn-primary float-md-left" routerLink="/addprove">Add nuevo proveedor</a>
+    </div>
+    <div class="col-sm">
+        <a class="btn btn-alert float-md-right "
+        routerLink="/">Go Home</a>
+    </div>
+  </div>
+
+  <div class="row">
+    <table class="table table-bordered table-striped">
+      <thead class="text-center p-3 mb-2 bg-primary text-whit">
+        <tr class="filters">
+          <th>Nombre</th>
+          <th>Email</th>
+          <th>Tel:</th>
         <th>Contacto:</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor=" let p of proveedores" appItemselect>
+      <tr *ngFor=" let p of proveedores" appItemselect class="text-right">
         <td> {{ p.nombre }}</td>
         <td> <a href="mailto:{{ p.email }}"> {{ p.email }}</a></td>
         <td> {{ p.telefono }}</td>
@@ -19,4 +31,5 @@
       </tr>
     </tbody>
   </table>
+</div>
 </div>
