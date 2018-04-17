@@ -16,7 +16,7 @@ export class InitSesionComponent implements OnInit {
   userData: any;
 
   msm = false;
-
+  autorizando = false;
 
   constructor(private formBuider: FormBuilder,
               private loginService: LoginEmailService,
@@ -35,12 +35,15 @@ export class InitSesionComponent implements OnInit {
 
   onSubmit() {
     this.userData =  this.saveUserData();
+    this.autorizando = true;
+
     this.loginService.inicioSession(this.userData);
     setTimeout(() => {
-                if (this.isAuth() === false) {
-                  this.msm = true;
-                  }
-              }, 2000);
+      if (this.isAuth() === false) {
+          this.msm = true;
+          this.autorizando = false;
+      }
+    }, 2000);
   }
 
   saveUserData() {

@@ -4,7 +4,10 @@
     <div class="col-sm">
       <h3>Proveedores</h3>
     </div>
-    <div class="col sm">
+    <div class="col-sm">
+        <input type="search" class="form-control" placeholder="buscar proveedor..." name="buscar" id="buscar" [formControl]="campoBuscar">
+    </div>
+    <div class="col-sm">
       <a class="btn btn-primary float-md-left" routerLink="/addprove">Add nuevo proveedor</a>
     </div>
     <div class="col-sm">
@@ -13,12 +16,12 @@
     </div>
   </div>
 
-  <div class="row mx-auto" style="width: 200px;" *ngIf="muestra">
+  <div class="row mx-auto" style="width: 200px;" *ngIf="!resultados && muestra">
     <app-loadind></app-loadind>
     loading...
   </div>
   
-  <div class="row" *ngIf="!muestra">
+  <div class="row" *ngIf="resultados ">
     <table class="table table-bordered table-striped">
       <thead class="text-center p-3 mb-2 bg-primary text-whit">
         <tr class="filters">
@@ -37,5 +40,9 @@
       </tr>
     </tbody>
   </table>
+  </div>
 </div>
+
+<div class=" alert alert-secondary mx-auto" style="width: 200px;" *ngIf="noResultados"  role="alert">
+  No hay resultados !
 </div>

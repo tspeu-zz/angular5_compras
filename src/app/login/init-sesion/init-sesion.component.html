@@ -21,7 +21,12 @@
         </div>
   <hr>
         <button type="submit" class="btn btn-success w-100 btn-lg"
-        [disabled]="!formSession.valid">Login</button>
+        [disabled]="!formSession.valid" *ngIf="!autorizando">Login</button>
+
+        <button *ngIf="autorizando" type="submit" class="btn btn-info w-100 btn-lg">
+          Autenticando usuario....
+          <app-loadind></app-loadind>
+        </button>
         
         <button routerLink="/login" class="alert alert-info nuevo my-3">
           <span >Click para registrar nuevo usuario</span>

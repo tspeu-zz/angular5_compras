@@ -84,6 +84,18 @@ provincias: string[] = ['Álava', 'Albacete', 'Alicante', 'Almería', 'Asturias'
     });
   }
 
+  // BUSCAR termino quiery es asi
+  getProvedoresSearch(buscar: string) {
+      const url = `${configUrl}?orderBy="nombre"&startAt="${ buscar }"&endAt="${buscar}\uf8ff"`;
+      // return this.httpClient.get(url);
+      return this.http.get(url)
+      .map( (res) => {
+        console.log('res-->', res);
+        return res = res.json();
+      });
+  }
+
+
   getProvincias() {
     return this.provincias;
   }
