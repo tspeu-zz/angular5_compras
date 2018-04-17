@@ -32,6 +32,10 @@ export class AddproveeComponent implements OnInit {
     this.proveedor.provincia = formulario.value.provincia;
     this.proveedor.telefono = formulario.value.telefono;
     console.log(formulario);
+
+    this.proService.postProveedor(this.proveedor)
+    .subscribe( newPro => {});
+
     formulario.reset();
   }
 

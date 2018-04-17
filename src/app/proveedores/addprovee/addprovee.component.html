@@ -3,11 +3,10 @@
   <div class="col <col-10 col-md-8">
       <h2>Add nuevo Proveedor</h2>
       <form (ngSubmit)="onSubmit(formpro)" #formpro="ngForm">
-  <!--<form (ngSubmit)="onSubmit(form)" #form="ngForm"> 
-  -->
+  
         <div class="form-group">
           <label for="nombre">Nombre:</label>
-          <input type="text" id="nombre" name="name" class="form-control" ngModel>
+          <input type="text" id="nombre" name="nombre" class="form-control" ngModel>
         </div>
         <div class="form-group">
             <label>C.I.F.</label>
@@ -31,7 +30,6 @@
             <option value="">Seleccionar provincia</option>
             <option *ngFor="let p of provincias">{{ p }}</option>
           </select>
-          <!-- <input type="text" class="form-control" id="provincia" name="provincia" ngModel> -->
         </div>        
         <div class="form-group">
           <label>Teléfono</label>
@@ -48,14 +46,13 @@
         </div>
         <div class="form-group">
           <label><i class="fas fa-asterisk obligado">&nbsp;</i>Persona de contacto</label>
-          <input type="text" class="form-control" id="contacto" name="contacto" ngModel required pattern="[A-Za-z][A-Za-z]+" maxlength="25">
+          <input type="text" class="form-control" id="contacto" name="contacto" ngModel required  maxlength="25">
         </div>
         <button type="submit" class="btn btn-success btn-lg"
         [disabled]="!formpro.valid">Añadir Proveedor</button>
         <span class="alert alert-warning" *ngIf="!formpro.valid && formpro.touched">Por Favor Rellene todos los campos obligatorios</span>
       </form>
-
-      <pre> {{ proveedor | json}}</pre>
+      <!-- <pre> {{ proveedor | json}}</pre> -->
   </div>
   <div class="col col col-md"></div>
 </div>

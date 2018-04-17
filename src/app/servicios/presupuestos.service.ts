@@ -17,11 +17,11 @@ const configUrlUPDATE = _URL_DB +  _URL_UPDATE;
 export class PresupuestosService {
 
   presupuestos = [];
+  item: Array<any> = [];
 
 
   constructor(private http: Http, private httpClient: HttpClient) { }
 
-  item: Array<any> = [];
 
   postPresupuesto(presupuesto) {
     const newPresupuesto = JSON.stringify(presupuesto);

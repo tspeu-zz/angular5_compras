@@ -12,11 +12,16 @@
 
         <div class="form-group">
           <label for="proveedor"><i class="fas fa-asterisk obligado">&nbsp;</i>Proveedor</label>
-          <i class="fas fa-check-square check" *ngIf="presupuestoForm.get('proveedor').valid"></i>
-          <i class="fas fa-exclamation-triangle uncheck" *ngIf="presupuestoForm.get('proveedor').invalid && presupuestoForm.get('proveedor').touched"></i>
+          <!-- <i class="fas fa-check-square check" *ngIf="presupuestoForm.get('proveedor').valid"></i>
+          <i class="fas fa-exclamation-triangle uncheck" *ngIf="presupuestoForm.get('proveedor').invalid && presupuestoForm.get('proveedor').touched"></i> -->
           
-          <input type="text" class="form-control" name="proveedor"  id="proveedor"
-          formControlName="proveedor">
+          <select class="form-control" name="proveedor"  
+            id="proveedor" formControlName="proveedor">
+            <option>Seleccione una opcion</option>
+            <option *ngFor="let p of proveedores" value="{{ p.nombre}}">
+                  {{p.nombre}}
+            </option>
+          </select>
 
           <div class="alert alert-danger" role="alert" 
           *ngIf="presupuestoForm.get('proveedor').invalid && presupuestoForm.get('proveedor').touched">

@@ -26,11 +26,14 @@
             <a class="nav-link" routerLink="/presupuestos">Presupuesto</a>
           </li>
 
-          <li class="nav-item justify-content-end" routerLinkActive="active" *ngIf="isAuth()">
-            <i class="fas fa-sign-out-alt"></i>
+          <li class="nav-item" routerLinkActive="active" *ngIf="isAuth()">
+            <a class="nav-link" routerLink="/addfactura">Facturas</a>
+          </li>
 
+          <li class="nav-item justify-content-end" routerLinkActive="active" *ngIf="isAuth()">
             <button class="btn btn-outline-danger btn-lg" (click)="onLogOut()">
-              LogOut
+              Logout
+              <i class="fas fa-sign-out-alt"></i>
             </button>
           </li>
 

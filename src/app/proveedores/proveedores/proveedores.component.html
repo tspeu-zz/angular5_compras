@@ -1,18 +1,24 @@
 <div class="container">
+
   <div class="row p-3">
     <div class="col-sm">
-        <h3>Proveedores</h3>
-      </div>
+      <h3>Proveedores</h3>
+    </div>
     <div class="col sm">
       <a class="btn btn-primary float-md-left" routerLink="/addprove">Add nuevo proveedor</a>
     </div>
     <div class="col-sm">
-        <a class="btn btn-alert float-md-right "
-        routerLink="/">Go Home</a>
+      <a class="btn btn-alert float-md-right "
+      routerLink="/">Go Home</a>
     </div>
   </div>
 
-  <div class="row">
+  <div class="row mx-auto" style="width: 200px;" *ngIf="muestra">
+    <app-loadind></app-loadind>
+    loading...
+  </div>
+  
+  <div class="row" *ngIf="!muestra">
     <table class="table table-bordered table-striped">
       <thead class="text-center p-3 mb-2 bg-primary text-whit">
         <tr class="filters">

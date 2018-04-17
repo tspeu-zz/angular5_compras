@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { PresupuestosService } from '../../servicios/presupuestos.service';
 import { PresupuestoModel } from '../../modelos/presupuesto.model';
+import { ProveedoresService } from '../../servicios/proveedores.service';
 
 @Component({
   selector: 'app-addpres',
@@ -19,8 +20,14 @@ export class AddpresComponent implements OnInit {
 
   modeloPresupuesto = new PresupuestoModel();
 
+  proveedores = [];
 
-  constructor(private presFormBuilder: FormBuilder, private presService: PresupuestosService) { }
+
+  constructor(private presFormBuilder: FormBuilder,
+              private presService: PresupuestosService,
+              private _proService: ProveedoresService) {
+      this.getAllProvedores();
+  }
 
   ngOnInit() {
 
@@ -47,8 +54,8 @@ export class AddpresComponent implements OnInit {
     this.presupuesto = this.savePresupuesto();
 
     this.presService.postPresupuesto(this.presupuesto)
-    .subscribe( (newPres) => {
-      console.log('new PRES--> ENVIADO', this.presupuesto);
+      .subscribe( (newPres) => {
+            console.log('new PRES--> ENVIADO', this.presupuesto);
     });
 
     this.presupuestoForm.reset();
@@ -77,6 +84,20 @@ export class AddpresComponent implements OnInit {
       this.presupuestoForm.value.iva = this.base * this.tipo;
       this.presupuestoForm.value.total = this.base + (this.base * this.tipo);
     });
+  }
+
+  // TODO pasarlo al servicio proveedores
+  getAllProvedores() {
+    this._proService.getConfig().subscribe( res => {
+      console.log('res-->', res);
+        // tslint:disable-next-line:forin
+        for ( const id$ in res) {
+          const p = res[id$];
+          p.id$ = id$;
+          this.proveedores.push(res[id$]);
+          // this.muestra = false;
+      }
+  });
   }
 
 }

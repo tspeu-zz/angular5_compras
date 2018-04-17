@@ -1,32 +1,20 @@
 import { Injectable } from '@angular/core';
+import { Headers, Http, Response } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
+import 'rxjs/RX';
+
+const _URL_DB = 'https://smart-home-78b50.firebaseio.com/';
+const _PROVEEDORES = 'proveedores.json';
+const _URL_UPDATE_PROV = 'proveedores';
+// https://smart-home-78b50.firebaseio.com/presupuestos/-L9ynEmCK6ooY5-b9cXn
+
+const configUrl = _URL_DB + _PROVEEDORES;
+const configUrlUPDATE = _URL_DB +  _URL_UPDATE_PROV;
 
 @Injectable()
 export class ProveedoresService {
 
-  proveedores: any = [
-    {
-      nombre: 'Telefónica',
-      cif: 'B12345678',
-      direccion: 'Paseo de la Castellana, 100',
-      cp: '28.010',
-      localidad: 'Madrid',
-      provincia: 'Madrid',
-      telefono: 911111111,
-      email: 'info@telefonica.com',
-      contacto: 'Juan Pérez'
-    },
-    {
-      nombre: 'Iberdrola',
-      cif: 'B87654321',
-      direccion: 'Príncipe de Vergara, 200',
-      cp: '28.015',
-      localidad: 'Madrid',
-      provincia: 'Madrid',
-      telefono: 922222222,
-      email: 'info@iberdrola.com',
-      contacto: 'Laura Martínez'
-    }
-];
+  proveedores: any = [];
 
 provincias: string[] = ['Álava', 'Albacete', 'Alicante', 'Almería', 'Asturias', 'Ávila', 'Badajoz',
   'Barcelona', 'Burgos', 'Cáceres', 'Cádiz', 'Cantabria', 'Castellón', 'Ciudad Real', 'Córdoba',
@@ -37,11 +25,63 @@ provincias: string[] = ['Álava', 'Albacete', 'Alicante', 'Almería', 'Asturias'
   'Zamora', 'Zaragoza'
 ];
 
+  constructor(private http: Http, private httpClient: HttpClient) { }
 
-  constructor() { }
+
+  postProveedor(proveedor) {
+    const newProveedor = JSON.stringify(proveedor);
+    const headers = new Headers({
+        'Content-type': 'aplication/json'
+      });
+
+    return this.http.post(_URL_DB + _PROVEEDORES, newProveedor, {headers})
+    .map((res) => {
+      console.log('res->', res.json());
+      return res.json();
+    });
+  }
 
   getProvedoores() {
-    return this.proveedores;
+    return this.http.get(_URL_DB + _PROVEEDORES)
+    .map( (res) => {
+      console.log('res-->', res);
+      return res = res.json();
+    } );
+  }
+
+  // httpClient
+  getConfig() {
+    return this.httpClient.get(configUrl);
+  }
+
+  getUpdate(id$: string) {
+    const url = `${configUrlUPDATE}/${id$}.json`;
+    console.log('configUrlUPDATE', configUrlUPDATE);
+    return this.httpClient.get(url);
+  }
+
+  putProveedor(p: any, id$: string) {
+    const newPre = JSON.stringify(p);
+    const headers = new Headers({
+      'Content-type': 'aplication/json'
+    });
+
+    const url = `${configUrlUPDATE}/${id$}.json`;
+
+    return this.http.put(url, newPre, {headers})
+          .map( res => {
+            console.log('akiiiiiiii- yupdatye',  res.json());
+            return res.json();
+          });
+  }
+
+  delProveedor(id$: string) {
+    const url = `${configUrlUPDATE}/${id$}.json`;
+    return this.http.delete(url)
+    .map( res => {
+      console.log('akiiiiiiii- delete',  res.json());
+      return res.json();
+    });
   }
 
   getProvincias() {
