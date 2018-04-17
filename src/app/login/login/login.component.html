@@ -2,7 +2,7 @@
   <div class="col col-md"></div>
   <div class="col-10 col-md-6 py-5">
     <form [formGroup]="formLogin" (ngSubmit)="onSubmit()" novalidate>
-      <h4 >Registro</h4>
+      <h4 >Registro Nuevo Usuario</h4><hr>
       <div class="form-group">
         <label for="Email"><i class="fas fa-asterisk obligado">&nbsp;</i>Email:
 
@@ -37,8 +37,14 @@
           </label>
       </div>
 <hr>
-      <button type="submit" class="btn btn-success"
-      [disabled]="!formLogin.valid">Registrar</button>
+      <button type="submit" class="btn btn-success btn-lg w-100"
+      [disabled]="!formLogin.valid">Alta nuevo usuario</button>
+
+      <button routerLink="/initsession" class="alert nuevo  my-3">
+        <span>Click para iniciar una sesion</span>
+        <i class="fab fa-pied-piper-pp">&nbsp;</i>
+      </button>
+
         <div class="row py-2">  
           <span class="alert alert-warning" *ngIf="!formLogin.dirty ">
           Por Favor Rellene todos los campos obligatorios marcados con

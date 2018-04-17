@@ -30,17 +30,18 @@ import { EurosPipe } from './pipes/euros.pipes.pipe';
 import { ProveedoresService } from './servicios/proveedores.service';
 import { PresupuestosService } from './servicios/presupuestos.service';
 import { LoginEmailService } from './servicios/login-email.service';
+import { GuardService } from './servicios/guard.service';
 
 const routes: Routes = [
   {path: '', component: IniciComponent },
+  {path: 'proveedores', component: ProveedoresComponent , canActivate: [GuardService] },
+  {path: 'addprove', component: AddproveeComponent , canActivate: [GuardService] },
+  {path: 'presupuestos', component: PresupuestosComponent, canActivate: [GuardService]  },
+  {path: 'addpres', component: AddpresComponent , canActivate: [GuardService] },
+  {path: 'editpres/:id', component: EditpresComponent, canActivate: [GuardService]  },
   {path: 'login', component: LoginComponent },
   {path: 'initsession', component: InitSesionComponent },
-  {path: 'proveedores', component: ProveedoresComponent },
-  {path: 'addprove', component: AddproveeComponent },
-  {path: 'presupuestos', component: PresupuestosComponent },
-  {path: 'addpres', component: AddpresComponent },
-  {path: 'editpres/:id', component: EditpresComponent },
-  {path: '**', component: IniciComponent }
+  {path: '**', component: IniciComponent , canActivate: [GuardService] }
 ];
 
 @NgModule({
@@ -72,7 +73,8 @@ const routes: Routes = [
   ],
   providers: [ProveedoresService,
               PresupuestosService,
-              LoginEmailService],
+              LoginEmailService,
+              GuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
