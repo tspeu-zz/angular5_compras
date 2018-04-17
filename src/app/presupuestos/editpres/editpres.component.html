@@ -1,0 +1,90 @@
+<div class="row">
+    <div class="col col col-md"></div>
+    <div class="col col-10 col-md-8">
+      <h2>Editar Presupuesto</h2>
+      <form [formGroup]="formEdit" (ngSubmit)="onSubmit()">
+
+        <div class="form-group">
+          <label for="proveedor"><i class="fas fa-asterisk obligado">&nbsp;</i>Proveedor</label>
+
+          <i class="fas fa-check-square check" *ngIf="formEdit.get('proveedor').valid"></i>
+          <i class="fas fa-exclamation-triangle uncheck"  *ngIf="formEdit.get('proveedor').invalid && formEdit.get('proveedor').touched"></i>
+          
+          <input type="text" class="form-control" name="proveedor" 
+          id="proveedor"formControlName="proveedor" [(ngModel)]="presupuesto.proveedor">
+
+          <div class="alert alert-danger" role="alert" 
+          *ngIf="formEdit.get('proveedor').invalid && formEdit.get('proveedor').touched">
+          Introduzca mínmino 5 caracteres!</div>
+
+        </div>
+
+        <div class="form-group">
+          <label for="fecha">fecha</label>
+          <input type="date" class="form-control" name="fecha" id="fecha"
+          formControlName="fecha" [(ngModel)]="presupuesto.fecha">
+        </div>
+
+        <div class="form-group">
+          <label for="concepto">Concepto</label>
+          <input type="text" class="form-control" name="concepto" id="concepto"
+          formControlName="concepto" [(ngModel)]="presupuesto.concepto">
+        </div>
+
+        <div class="form-group">
+          <label for="base">Base imponible</label>
+          <input type="number" class="form-control" name="base" id="base"
+          formControlName="base" [(ngModel)]="presupuesto.base">
+        </div>
+
+        <div class="form-group">
+            <label for="tipo">Tipo de IVA</label>
+            <select class="form-control" id="tipo" name="tipo" 
+            formControlName="tipo"  [(ngModel)]="presupuesto.tipo">
+              <option value="">seleccione....</option>
+              <option value=0> 0 %   </option>
+              <option value=0.04> 4 %</option>
+              <option value=0.10> 10 %</option>
+              <option value=0.21> 21 %</option>
+            </select>
+        <!-- <input type="number" class="form-control" name="tipo" id="tipo" formControlName="tipo"> -->
+        </div>
+        
+        <div class="form-group">
+          <label for="iva">Importe IVA</label>
+          <input type="number" class="form-control" name="iva" id="iva" formControlName="iva" 
+          [ngModel]="formEdit.value.iva" >
+        </div>
+        
+        <div class="form-group">
+            <label for="total">Total presupuesto</label>
+            <input type="number" class="form-control" name="total" id="total"
+            formControlName="total" [(ngModel)]="formEdit.value.total" >
+        </div>
+
+        <div class="col col pb-3 col-sm">
+          <button type="submit" class="btn btn-success"
+          [disabled]="!formEdit.valid">Guardar presupuesto
+        </button>
+          
+          <a  class="btn btn-danger" routerLink="/presupuestos">Cancelar</a>  
+          
+          
+        </div>
+        <div class="col py-2 col-sm">  
+              <span class="alert alert-warning" *ngIf="!formEdit.valid ">
+                Por Favor Rellene todos los campos obligatorios marcados con 
+                <i class="fas fa-asterisk obligado">&nbsp;</i></span>
+        </div>
+
+
+    </form> 
+  </div>
+</div>
+<!-- <div class="py-5">
+
+    <pre>Valor form {{ formEdit.value | json}}</pre>
+    <pre>Estado {{formEdit.status | json }}</pre>
+    <pre>VALOR ENVIADO {{presupuesto | json }}</pre>
+    
+  </div> -->

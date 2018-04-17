@@ -1,0 +1,26 @@
+input.ng-invalid.ng-touched{
+    /* background: red; */
+    /* border- */
+    /* color: red; */
+    border-left: 5px solid crimson;
+}
+
+input.ng-valid.ng-dirty{
+    
+    /* background: greenyellow; */
+    border-left: 5px solid rgb(5, 211, 5);
+}
+
+.check{
+    color:rgb(5, 211, 5);
+    
+}
+
+.uncheck{
+    color: crimson;
+}
+
+.obligado{
+    color:indigo;
+    font-size: 8px;
+}

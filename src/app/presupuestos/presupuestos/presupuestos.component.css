@@ -1,0 +1,22 @@
+
+
+.fakeItem h2,  p {
+    background-color: lightgrey;
+    opacity: 0.5;
+    height: 1em;
+    margin-top: 10px;
+    }
+
+
+
+.fakeItem h2 {
+width: 35%;
+}
+
+/* .fakeItem h3 {
+width: 40%;
+}  */
+
+.fakeItem p {
+width: 60%;
+}

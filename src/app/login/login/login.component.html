@@ -1,0 +1,59 @@
+<div class="row">
+  <div class="col col-md"></div>
+  <div class="col-10 col-md-6 py-5">
+    <form [formGroup]="formLogin" (ngSubmit)="onSubmit()" novalidate>
+      <h4 >Registro</h4>
+      <div class="form-group">
+        <label for="Email"><i class="fas fa-asterisk obligado">&nbsp;</i>Email:
+
+          <p  class=" alert-danger" *ngIf="errForm.email">
+              {{ msmValidacion.email.required}} 
+          </p>
+        </label>
+        <input class="form-control" type="email" name="email" id="email" 
+        formControlName="email"> 
+          <label  class="alert alert-danger" *ngIf="errForm.email">
+            {{ msmValidacion.email.email }} 
+            
+          </label>
+      </div>
+      
+      <div class="form-group">
+        <label for="password"><i class="fas fa-asterisk obligado">&nbsp;</i>Password:</label>
+        
+          <i class="fas fa-check-square check" *ngIf="formLogin.get('password').valid"></i>
+          <i class="fas fa-exclamation-triangle uncheck"
+           *ngIf="formLogin.get('password').invalid && formLogin.get('password').touched"></i>
+        
+          <input class="form-control" type="password" name="password" id="password" 
+          formControlName="password">
+
+          <label  class="alert alert-danger" *ngIf="errForm.password">
+              {{ msmValidacion.password.required  }} &nbsp;
+              {{ msmValidacion.password.pattern  }} &nbsp;
+              {{ msmValidacion.password.minLength  }} 
+      
+
+          </label>
+      </div>
+<hr>
+      <button type="submit" class="btn btn-success"
+      [disabled]="!formLogin.valid">Registrar</button>
+        <div class="row py-2">  
+          <span class="alert alert-warning" *ngIf="!formLogin.dirty ">
+          Por Favor Rellene todos los campos obligatorios marcados con
+          <i class="fas fa-asterisk obligado">&nbsp;</i></span>
+        </div>
+      </form>
+    </div>
+  <div class="col col-md"></div>
+</div>
+
+
+    <!-- <div class="py-5">
+
+      <pre>Valor form {{ formLogin.value | json}}</pre>
+      <pre>Estado {{formLogin.status | json }}</pre>
+      <pre>VALOR ENVIADO {{userData | json }}</pre>
+      
+    </div> -->

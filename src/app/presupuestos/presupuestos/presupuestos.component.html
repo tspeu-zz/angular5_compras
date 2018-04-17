@@ -1,0 +1,80 @@
+<div class="container">
+    <div class="row p-3">
+        <div class="col-sm">
+            <h3>Presupuestos</h3>
+        </div>
+        <div class="col-sm">
+            <a class="btn btn-info float-md-left "
+            routerLink="/addpres">Add nuevo presupuesto</a>
+        </div>
+        <div class="col-sm">
+            <a class="btn btn-alert float-md-right "
+            routerLink="/">Go Home</a>
+        </div>
+    </div>
+
+    <div class="row">
+        <table class="table table-bordered table-striped">
+            <thead class="text-center p-3 mb-2 bg-info text-white">
+                <tr class="filters">
+                    <th>Proveedor</th>
+                    <th>Fecha</th>
+                    <th>Concepto:</th>
+                    <th>Importe s/IVA:</th>
+                    <th>IVA:</th>
+                    <th>Total:</th>
+                    <th>editar</th>
+                    <th>eliminar</th>
+            </tr>
+        </thead>
+        <tbody [hidden]="skeletons">
+            <tr *ngFor=" let p of presupuestos;let i = index " appItemselect class="text-right">
+                <td> {{ p.proveedor  }}</td>
+                <td> {{ p.fecha }}</td>
+                <td> {{ p.concepto }}</td>
+                <td> {{ p.base  | eurosPipes}}</td>
+                <td> {{ p.iva | eurosPipes}}</td>
+                <td> {{ p.total | eurosPipes}}</td>
+                <td>
+                    <button type="button" class="btn btn-success"
+                    routerLink="/editpres/{{ p.id$}}">Editar
+                    </button>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-danger"
+                    (click)="eliminarPresupuesto(p.id$)">Eliminar
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+
+        <tbody [hidden]="!skeletons" class="fakeItem">
+                <tr *ngFor=" let p of skeletonData" appItemselect >
+                        <td> {{ p.proveedor  }}</td>
+                        <td> {{ p.fecha }}</td>
+                        <td> {{ p.concepto }}</td>
+                        <td> {{ p.base  }}</td>
+                        <td> {{ p.iva }}</td>
+                        <td> {{ p.total }}</td>
+                    <td>
+                        <button type="button" class="btn btn-light">Editar </button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-light">Eliminar </button>
+                    </td>
+                </tr>
+        </tbody>
+        
+    </table>
+    </div>
+</div>
+
+<div [hidden]="muestra">
+    <app-loadind></app-loadind>
+</div>
+
+<div *ngIf="eliminado" class="alert alert-info" role="alert">
+    Registro eliminado correctamente !
+    <i class="fas fa-check-square check"></i>
+</div>
+

@@ -14,22 +14,27 @@ import { environment } from '../environments/environment';
 // componentes
 import { AppComponent } from './app.component';
 import { IniciComponent } from './inici/inici.component';
+import { LoginComponent } from './login/login/login.component';
+import { InitSesionComponent } from './login/init-sesion/init-sesion.component';
 import { HeaderComponent } from './header/header.component';
 import { ProveedoresComponent } from './proveedores/proveedores/proveedores.component';
 import { AddproveeComponent } from './proveedores/addprovee/addprovee.component';
 import { PresupuestosComponent } from './presupuestos/presupuestos/presupuestos.component';
 import { AddpresComponent } from './presupuestos/addpres/addpres.component';
 import { EditpresComponent } from './presupuestos/editpres/editpres.component';
+import { LoadindComponent } from './utilidates/loadind/loadind.component';
 // directivas
 import { ItemselectDirective } from './directivas/itemselect.directive';
+import { EurosPipe } from './pipes/euros.pipes.pipe';
 // servicios
 import { ProveedoresService } from './servicios/proveedores.service';
 import { PresupuestosService } from './servicios/presupuestos.service';
-import { EurosPipe } from './pipes/euros.pipes.pipe';
-import { LoadindComponent } from './utilidates/loadind/loadind.component';
+import { LoginEmailService } from './servicios/login-email.service';
 
 const routes: Routes = [
   {path: '', component: IniciComponent },
+  {path: 'login', component: LoginComponent },
+  {path: 'initsession', component: InitSesionComponent },
   {path: 'proveedores', component: ProveedoresComponent },
   {path: 'addprove', component: AddproveeComponent },
   {path: 'presupuestos', component: PresupuestosComponent },
@@ -50,7 +55,9 @@ const routes: Routes = [
     PresupuestosComponent,
     EurosPipe,
     LoadindComponent,
-    EditpresComponent
+    EditpresComponent,
+    LoginComponent,
+    InitSesionComponent
   ],
   imports: [
     BrowserModule,
@@ -63,7 +70,9 @@ const routes: Routes = [
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features
     HttpClientModule
   ],
-  providers: [ProveedoresService, PresupuestosService],
+  providers: [ProveedoresService,
+              PresupuestosService,
+              LoginEmailService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
