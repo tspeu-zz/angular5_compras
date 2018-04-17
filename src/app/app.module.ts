@@ -11,6 +11,8 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { environment } from '../environments/environment';
 
+// modulos
+import { FacturasModule } from './facturas/facturas.module';
 // componentes
 import { AppComponent } from './app.component';
 import { IniciComponent } from './inici/inici.component';
@@ -23,6 +25,7 @@ import { PresupuestosComponent } from './presupuestos/presupuestos/presupuestos.
 import { AddpresComponent } from './presupuestos/addpres/addpres.component';
 import { EditpresComponent } from './presupuestos/editpres/editpres.component';
 import { LoadindComponent } from './utilidates/loadind/loadind.component';
+import { AddFacturaComponent } from './facturas/facturas/add-factura/add-factura.component';
 // directivas
 import { ItemselectDirective } from './directivas/itemselect.directive';
 import { EurosPipe } from './pipes/euros.pipes.pipe';
@@ -41,6 +44,7 @@ const routes: Routes = [
   {path: 'editpres/:id', component: EditpresComponent, canActivate: [GuardService]  },
   {path: 'login', component: LoginComponent },
   {path: 'initsession', component: InitSesionComponent },
+  {path: 'addfactura', component: AddFacturaComponent },
   {path: '**', component: IniciComponent , canActivate: [GuardService] }
 ];
 
@@ -69,7 +73,8 @@ const routes: Routes = [
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features
-    HttpClientModule
+    HttpClientModule,
+    FacturasModule
   ],
   providers: [ProveedoresService,
               PresupuestosService,
