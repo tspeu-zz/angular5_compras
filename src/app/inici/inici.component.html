@@ -1,7 +1,65 @@
-<div class="jumbotron">
-  <h1 class="text-center">Bienvenido a App Compras</h1>
+<!-- <div class="jumbotron"> -->
+      <!-- Header - set the background image for the header in the line below -->
+<header class="py-5 bg-image-full" style="background-image: url('https://unsplash.it/1900/1080?image=1076');">
+  <img class="img-fluid d-block mx-auto "  src="/assets/pied-piper-pp.svg" width="100" height="100" 
+  style="background: lawngreen;" alt="">
+  <!--     <img class="img-fluid d-block mx-auto" src="http://placehold.it/200x200&text=Logo" alt=""> -->
+  <h1 class="text-center" style="color: honeydew;">Bienvenido a App Compras</h1>
+</header>
 
-</div>
-<div>
-  
+<!-- </div> -->
+<!-- Content section -->
+  <div *ngIf="!isAuth()">
+    <section class="py-5 text-center">
+      <div class="container">
+        <a class="btn btn-outline-success btn-lg" routerLink="/initsession">
+          <h3>Por favor inicie session</h3>
+        </a>
+      </div>
+      </section>
+  </div>
+
+<div class="container">
+
+  <div class="row" *ngIf="isAuth()">
+    <div class="col-md-3">
+      <a routerLink="/proveedores" style="text-decoration: none;"> 
+        <div class="rectorange">
+          <i class="fa fa-address-book" style="font-size: 60px">
+            <p class="p-3" style="font-size: 20px">Proveedores</p>
+          </i>
+        </div>
+      </a>
+    </div>  
+    <div class="col-md-3">
+      <a routerLink="/presupuestos" style="text-decoration: none;"> 
+        <div class="rectgreen">
+          <i class="fas fa-dollar-sign" style="font-size: 60px">
+            <p class="p-3" style="font-size: 20px">Presupuestos</p>
+          </i>
+        </div>
+      </a>
+    </div> 
+    
+    <div class="col-md-3">
+      <a routerLink="/addfactura" style="text-decoration: none;"> 
+        <div class="rectviolet">
+          <i class="fas fa-shopping-cart" style="font-size: 60px">
+            <p class="p-3" style="font-size: 20px">Facturas</p>
+          </i>
+        </div>
+      </a>
+    </div>  
+
+    <div class="col-md-3">
+      <a routerLink="/contratos" style="text-decoration: none;"> 
+        <div class="rectpink">
+          <i class="fas fa-file" style="font-size: 60px">
+            <p class="p-3" style="font-size: 20px">Contratos</p>
+          </i>
+        </div>
+      </a>
+    </div>  
+
+  </div>
 </div>

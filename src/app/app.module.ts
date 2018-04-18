@@ -28,6 +28,9 @@ import { AddpresComponent } from './presupuestos/addpres/addpres.component';
 import { EditpresComponent } from './presupuestos/editpres/editpres.component';
 import { LoadindComponent } from './utilidates/loadind/loadind.component';
 import { AddFacturaComponent } from './facturas/facturas/add-factura/add-factura.component';
+import { UploadComponent } from './uploads/upload.component';
+import { ContratosComponent } from './contratos/contratos.component';
+import { DetallesComponent } from './contratos/detalles/detalles.component';
 // directivas
 import { ItemselectDirective } from './directivas/itemselect.directive';
 import { EurosPipe } from './pipes/euros.pipes.pipe';
@@ -36,8 +39,7 @@ import { ProveedoresService } from './servicios/proveedores.service';
 import { PresupuestosService } from './servicios/presupuestos.service';
 import { LoginEmailService } from './servicios/login-email.service';
 import { GuardService } from './servicios/guard.service';
-import { ContratosComponent } from './contratos/contratos.component';
-import { UploadComponent } from './uploads/upload/upload.component';
+import { LoadfileService } from './servicios/load.service';
 
 const routes: Routes = [
   {path: '', component: IniciComponent },
@@ -49,6 +51,8 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent },
   {path: 'initsession', component: InitSesionComponent },
   {path: 'addfactura', component: AddFacturaComponent },
+  {path: 'uploads', component: UploadComponent },
+  {path: 'contratos', component: ContratosComponent },
   {path: '**', component: IniciComponent , canActivate: [GuardService] }
 ];
 
@@ -68,7 +72,8 @@ const routes: Routes = [
     LoginComponent,
     InitSesionComponent,
     ContratosComponent,
-    UploadComponent
+    UploadComponent,
+    DetallesComponent
   ],
   imports: [
     BrowserModule,
@@ -86,7 +91,8 @@ const routes: Routes = [
   providers: [ProveedoresService,
               PresupuestosService,
               LoginEmailService,
-              GuardService],
+              GuardService,
+              LoadfileService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

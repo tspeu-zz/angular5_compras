@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginEmailService } from '../servicios/login-email.service';
 
 @Component({
   selector: 'app-inici',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IniciComponent implements OnInit {
 
-  constructor() { }
+  constructor(private autService: LoginEmailService) { }
 
   ngOnInit() {
+  }
+
+  isAuth() {
+    return this.autService.isAuthentificated();
   }
 
 }

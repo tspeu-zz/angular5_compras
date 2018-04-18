@@ -1,15 +1,16 @@
-<nav class="navbar navbar-expand-lg  sticky-top navbar-dark bg-primary">
+<nav class="navbar navbar-expand-lg  sticky-top navbar-light bg-light">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <a class="navbar-brand" href="#">
-    <img src="/assets/logo.png" width="30" height="30" alt=""><strong>Compras App</strong>
+  <a class="navbar-brand " href="#">
+    <img src="/assets/pied-piper-pp.svg" width="30" height="30" alt=""  class="m-2" style="background: lawngreen;" >
+    <strong>Compras App</strong>
   </a>
 
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <ul class="navbar-nav mr-auto  w-100 justify-content-end">
           <li class="nav-item" routerLinkActive="active" *ngIf="!isAuth()">
-              <button class="btn btn-success btn-lg" routerLink="/initsession">inicio Session</button>
+              <button class="btn btn-outline-success btn-lg" routerLink="/initsession">inicio Session</button>
           </li>
 
           <li class="nav-item active" routerLinkActive="active"
@@ -30,6 +31,10 @@
             <a class="nav-link" routerLink="/addfactura">Facturas</a>
           </li>
 
+          <li class="nav-item" routerLinkActive="active" *ngIf="isAuth()">
+            <a class="nav-link" routerLink="/contratos">Contratos</a>
+          </li>
+
           <li class="nav-item justify-content-end" routerLinkActive="active" *ngIf="isAuth()">
             <button class="btn btn-outline-danger btn-lg" (click)="onLogOut()">
               Logout
@@ -41,3 +46,4 @@
     </div>
     
 </nav>
+
