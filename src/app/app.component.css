@@ -3,6 +3,9 @@
     padding-top: 56px;
     }
 }
+body{
+    background: honeydew;
+}
 
 .bg-image-full {
     background: no-repeat center center scroll;
@@ -15,4 +18,9 @@
 .piper{
     background: lawngreen;
     color:lime;
+}
+
+
+.titles{
+    color:honeydew;
 }
