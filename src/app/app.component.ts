@@ -15,7 +15,11 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     firebase.initializeApp({
       apiKey: environment.firebase.apiKey,
-      authDomain: environment.firebase.authDomain
+      authDomain: environment.firebase.authDomain,
+      databaseURL: environment.firebase.databaseURL,
+      projectId: environment.firebase.projectId,
+      storageBucket: environment.firebase.storageBucket,
+      messagingSenderId: environment.firebase.messagingSenderId
     });
   }
 
