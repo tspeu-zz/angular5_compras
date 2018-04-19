@@ -1,0 +1,46 @@
+<div class="container">
+  
+  <div class="row">
+    <h3>Contratos</h3>
+  </div>
+  <hr>
+
+    <div class="row mx-auto">
+      <div class="col-md-2"></div>
+        <div class="col-md-8">
+          <div class="iploader">
+            <div class="mx-auto">
+              <p>
+                <i class="fas fa-file"></i>
+                <i class="fas fa-file-word"></i>
+                <i class="fas fa-file-pdf"></i>
+                <i class="fas fa-file-powerpoint"></i>
+                <i class="fas fa-file-excel"></i>
+              </p>
+              <input type="file" (change)="cargarFile($event)">
+            </div>
+              
+              <div class="text-center m-3 p-3">
+                <button type="button" class="btn btn-success btn-lg"
+                (click)="uploadSingle()" [disabled]="!selectFiles"> 
+                Subir archivo
+              </button>
+              
+              <button type="button" class="btn btn-danger btn-lg"
+              routerLink="/contratos"> Cancelar</button>
+            </div><br>
+            
+            <div *ngIf="loading">
+              <div class="progress">
+                <div class="progress-bar progress-bar-animated"
+                [ngStyle]="{ 'width': currentUpload?.progress + '%'}">
+              </div>
+            </div>
+            <span>Subiendo fichero {{currentUpload?.name}} | {{currentUpload?.progress | number: '1.2-2'}} % Completado</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2"></div>
+    </div>
+</div>
+

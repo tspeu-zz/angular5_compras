@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="row p-3 mx-auto">
+    <div class="col-sm">
+      <h3>Listado de contratos</h3>
+    </div>
+    <button class="btn btn-outline-primary float-md-right" routerLink="/uploads"> Subir nuevos contratos </button>
+  </div>
+
+  <div *ngFor="let upload of uploads | async" class="list-group m-2">
+        <app-detalles [upload]="upload"></app-detalles>
+  </div>
+</div>
+
