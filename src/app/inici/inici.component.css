@@ -1,13 +1,34 @@
 p{
     font-family: 'Montserrat', sans-serif;
 }
+.flex-container {
+    margin-top: 10px;
+    display: flex; /* or inline-flex */
+    height: 100%;
+    /* flex-flow: row nowrap; */
+    align-items: center;
+    /* flex-direction: row; */
+    width: 100%;
+    flex-wrap: nowrap;
+}
+
+.item {
+    width: 40%;
+    padding: 20px;
+    /* margin: 20px; */
+}
+
+.item i {
+    margin: 20px;
+    flex-wrap: wrap;
+}
 
 .rectorange {
     background-color: #067106;
     color: white;
     text-align: center;
-    padding: 20px;
-    margin: 20px;
+    /* padding: 20px; */
+
 }
 
 .rectorange:hover {
@@ -18,8 +39,8 @@ p{
     background-color: #089a08;
     color: white;
     text-align: center;
-    padding: 20px;
-    margin: 20px;
+    /* padding: 20px; */
+
 }
 
 .rectgreen:hover {
@@ -30,8 +51,8 @@ p{
     background-color: #0abb0a;
     color: white;
     text-align: center;
-    padding: 20px;
-    margin: 20px;
+    /* padding: 20px; */
+
 }
 
 .rectviolet:hover {
@@ -42,8 +63,8 @@ p{
     background-color: #0aeb0a;
     color: white;
     text-align: center;
-    padding: 20px;
-    margin: 20px;
+    /* padding: 20px; */
+
 }
 
 .rectpink:hover {

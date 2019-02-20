@@ -1,0 +1,73 @@
+<div class="container">
+    <div class="row p-3">
+        <div class="col-sm">
+            <h3>Facturas</h3>
+        </div>
+        <div class="col-sm">
+            <a class="btn btn-outline-primary float-md-left disabled"
+            routerLink="/addfactura">Add nueva Factura</a>
+        </div>
+        <div class="col-sm">
+            <a class="btn btn-outline-info float-md-right disabled"
+            routerLink="/" >Go Home</a>
+        </div>
+    </div>
+<!--  -->
+    <div class="row">
+    <table class="table table-bordered table-striped">
+        <thead class="text-center p-3 mb-2 bg-info text-white">
+            <tr class="filters">
+                <th>Factura Nº</th>
+                <th>Fecha</th>
+                <th>Concepto:</th>
+                <!-- <th>Importe s/IVA:</th> -->
+                <!-- <th>IVA:</th> -->
+                <th>Total:</th>
+                <th>editar</th>
+                <th>eliminar</th>
+            </tr>
+        </thead>
+        
+        <tbody [hidden]="skeletons">
+            <!-- <tr *ngFor=" let p of presupuestos;let i = index " appItemselect class="text-right"> -->
+            <tr *ngFor=" let p of facturas ;let i = index " appItemselect class="text-right">
+                <td> {{ p.proveedor  }}</td>
+                <td> {{ p.fecha }}</td>
+                <td> {{ p.concepto }}</td>
+                <!-- <td> {{ p.base  | eurosPipes}}</td>
+                <!-- <td> {{ p.iva | eurosPipes}}</td> -->
+                <td> {{ p.total }}</td> 
+                <td>
+                    <button type="button" class="btn btn-success disabled">Editar
+                    </button>
+                    <!-- routerLink="/editfactura/{{ p.id$}}" -->
+                </td>
+                <td> 
+                    <!-- (click)="eliminarPresupuesto(p.id$)" -->
+                    <button type="button" class="btn btn-danger disabled">Eliminar
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+
+        <tbody [hidden]="!skeletons" class="fakeItem">
+            <tr *ngFor=" let p of skeletonData" appItemselect >
+                    <td> {{ p.proveedor  }}</td>
+                    <td> {{ p.fecha }}</td>
+                    <td> {{ p.concepto }}</td>
+                    <!-- <td> {{ p.base  }}</td>
+                    <td> {{ p.iva }}</td> -->
+                    <td> {{ p.total }}</td>
+                <td>
+                    <button type="button" class="btn btn-light">Editar </button>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-light">Eliminar </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    </div>
+    <div class="col col col-md"></div>
+</div>

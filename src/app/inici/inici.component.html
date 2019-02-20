@@ -1,6 +1,7 @@
 <!-- <div class="jumbotron"> -->
       <!-- Header - set the background image for the header in the line below -->
-<header class="py-5 bg-image-full" style="background-image: url('https://unsplash.it/1900/1080?image=1081');">
+      <!-- style="background-image: url('https://unsplash.it/1900/1080?image=1081');" -->
+<header class="py-5 bg-image-full" >
   <img class="img-fluid d-block mx-auto "  src="/assets/pied-piper-pp.svg" width="100" height="100" 
   style="background: lawngreen;" alt="">
   <!--     <img class="img-fluid d-block mx-auto" src="http://placehold.it/200x200&text=Logo" alt=""> -->
@@ -20,8 +21,52 @@
   </div>
 
 <div class="container">
+    <div class="flex-container" *ngIf="isAuth()">
+      <div class="item">
+        <a routerLink="/proveedores" style="text-decoration: none;"> 
+          <div class="rectorange">
+            <i class="fa fa-address-book" style="font-size: 60px">
+              <p class="p-3" style="font-size: 20px">Proveedores</p>
+            </i>
+          </div>
+        </a>
+      </div>  
 
-  <div class="row" *ngIf="isAuth()">
+      <div class="item">
+        <a routerLink="/presupuestos" style="text-decoration: none;"> 
+          <div class="rectgreen">
+            <i class="fas fa-dollar-sign" style="font-size: 60px">
+              <p class="p-3" style="font-size: 20px">Presupuestos</p>
+            </i>
+          </div>
+        </a>
+      </div> 
+      
+      <div class="item">
+        <a routerLink="/facturas" style="text-decoration: none;"> 
+          <div class="rectviolet">
+            <i class="fas fa-shopping-cart" style="font-size: 60px">
+              <p class="p-3" style="font-size: 20px">Facturas</p>
+            </i>
+          </div>
+        </a>
+      </div>  
+  
+      <div class="item">
+        <a routerLink="/contratos" style="text-decoration: none;"> 
+          <div class="rectpink">
+            <i class="fas fa-file" style="font-size: 60px">
+              <p class="p-3" style="font-size: 20px">Contratos</p>
+            </i>
+          </div>
+        </a>
+      </div>  
+    
+    </div>
+  
+</div>
+<!-- 
+<div class="row" *ngIf="isAuth()">
     <div class="col-md-3">
       <a routerLink="/proveedores" style="text-decoration: none;"> 
         <div class="rectorange">
@@ -62,4 +107,5 @@
     </div>  
 
   </div>
-</div>
+
+ -->

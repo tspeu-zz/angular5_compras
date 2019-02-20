@@ -27,6 +27,7 @@ import { PresupuestosComponent } from './presupuestos/presupuestos/presupuestos.
 import { AddpresComponent } from './presupuestos/addpres/addpres.component';
 import { EditpresComponent } from './presupuestos/editpres/editpres.component';
 import { LoadindComponent } from './utilidates/loadind/loadind.component';
+import { FacturasComponent } from './facturas/facturas/facturas.component';
 import { AddFacturaComponent } from './facturas/facturas/add-factura/add-factura.component';
 import { UploadComponent } from './uploads/upload.component';
 import { ContratosComponent } from './contratos/contratos.component';
@@ -50,11 +51,13 @@ const routes: Routes = [
   {path: 'editpres/:id', component: EditpresComponent, canActivate: [GuardService]  },
   {path: 'login', component: LoginComponent },
   {path: 'initsession', component: InitSesionComponent },
+  {path: 'facturas', component: FacturasComponent },
   {path: 'addfactura', component: AddFacturaComponent },
   {path: 'uploads', component: UploadComponent },
   {path: 'contratos', component: ContratosComponent },
   {path: '**', component: IniciComponent , canActivate: [GuardService] }
 ];
+  //     {path: 'new-character', loadChildren: './create-caracter/create-carater.module#CreateCaracterModule'},
 
 @NgModule({
   declarations: [

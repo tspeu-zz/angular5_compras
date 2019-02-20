@@ -1,40 +1,52 @@
-<div class="row">
-  <div class="col <col col-md"></div>
-  <div class="col <col-10 col-md-8">
-      <h2>Add nuevo Proveedor</h2>
+
+<div class="container py-3">
+  <div class="row">
+    <div class="mx-auto col-sm-6">
+      <div class="card">
+        <div class="card-header">
+          <h2>Add nuevo Proveedor</h2>
+        </div>
+      <div class="card-body">
       <form (ngSubmit)="onSubmit(formpro)" #formpro="ngForm">
-  
-        <div class="form-group">
+        
+        <div class="form-group ">
           <label for="nombre">Nombre:</label>
           <input type="text" id="nombre" name="nombre" class="form-control" ngModel>
         </div>
+
         <div class="form-group">
             <label>C.I.F.</label>
             <input type="text" class="form-control" id="cif" name="cif" ngModel>
         </div>
+
         <div class="form-group">
           <label>Dirección</label>
           <input type="text" class="form-control" id="direccion" name="direccion" ngModel>
         </div>
+
         <div class="form-group">
           <label>Código Postal</label>
           <input type="text" class="form-control" id="cp" name="cp" ngModel>
         </div>
+
         <div class="form-group">
           <label>Localidad</label>
           <input type="text" class="form-control" id="localidad" name="localidad" ngModel>
         </div>
+
         <div class="form-group">
           <label>Provincia</label>
           <select class="form-control" id="provincia" name="provincia" ngModel>
             <option value="">Seleccionar provincia</option>
             <option *ngFor="let p of provincias">{{ p }}</option>
           </select>
-        </div>        
+        </div> 
+
         <div class="form-group">
           <label>Teléfono</label>
           <input type="number"  class="form-control" id="telefono" name="telefono" ngModel>
         </div>
+
         <div class="form-group">
           <label><i class="fas fa-asterisk obligado">&nbsp;</i>Correo Electrónico </label>
           <i class="fas fa-exclamation-circle uncheck" *ngIf="email.invalid && email.touched"></i>
@@ -44,15 +56,22 @@
           <div class="alert alert-danger" role="alert" 
           *ngIf="email.invalid && email.touched">Email inválido</div>
         </div>
+
         <div class="form-group">
           <label><i class="fas fa-asterisk obligado">&nbsp;</i>Persona de contacto</label>
           <input type="text" class="form-control" id="contacto" name="contacto" ngModel required  maxlength="25">
         </div>
-        <button type="submit" class="btn btn-success btn-lg"
-        [disabled]="!formpro.valid">Añadir Proveedor</button>
-        <span class="alert alert-warning" *ngIf="!formpro.valid && formpro.touched">Por Favor Rellene todos los campos obligatorios</span>
+
+        <div class="col col pb-3 col-sm">
+          <button type="submit" class="btn btn-success btn-lg"
+          [disabled]="!formpro.valid">Añadir Proveedor</button>
+          <span class="alert alert-warning" *ngIf="!formpro.valid && formpro.touched">Por Favor Rellene todos los campos obligatorios</span>
+        </div>
+
       </form>
-      <!-- <pre> {{ proveedor | json}}</pre> -->
+        <!-- <pre> {{ proveedor | json}}</pre> -->
+    </div>
+    </div>
   </div>
-  <div class="col col col-md"></div>
+  </div>
 </div>

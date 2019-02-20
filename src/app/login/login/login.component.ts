@@ -26,8 +26,8 @@ export class LoginComponent implements OnInit {
     },
     'password': {
       'required': ' Password required ',
-      'pattern':  ' Al menos un numero y una letra! ',
-      'minLength': 'minimo 6 caracteres'
+      'pattern':  ' Debe introducir al menos un número y una letra! ',
+      'minLength': 'mínimo 6 caracteres'
     }
   };
 
